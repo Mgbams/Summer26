@@ -320,7 +320,7 @@ force-app/
 
 Found an issue or have a question?
 
-- 📧 Contact: Kingsley MGBAMS — your.email@example.com
+- 📧 Contact: Kingsley MGBAMS — cmgbams@gmail.com
 
 ---
 

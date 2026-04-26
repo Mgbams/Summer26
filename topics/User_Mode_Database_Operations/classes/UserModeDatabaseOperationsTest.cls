@@ -3,7 +3,7 @@ public class UserModeDatabaseOperationsTest {
     @TestSetup
     static void setupTestData() {
         // Create test data in system mode to ensure it exists
-        Account testAccount = new Account(Name = 'Test Account');
+        Account testAccount = new Account(Name = 'Test Account', AnnualRevenue = 10000);
         Database.insert(testAccount, AccessLevel.SYSTEM_MODE);
     }
 
@@ -29,7 +29,7 @@ public class UserModeDatabaseOperationsTest {
             UserModeDatabaseOperations.demonstrateSystemMode();
 
             // Verify that system mode bypasses permissions
-            List<Account> accounts = [SELECT Id FROM Account WHERE Name = 'Test Account from System Mode'];
+            List<Account> accounts = [SELECT Id, AnnualRevenue FROM Account WHERE Name = 'Test Account from System Mode'];
             System.assert(accounts.size() > 0, 'System mode insert should succeed');
         }
     }

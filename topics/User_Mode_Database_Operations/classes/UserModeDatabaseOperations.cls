@@ -6,12 +6,12 @@ public with sharing class UserModeDatabaseOperations {
     public static void demonstrateUserMode() {
         try {
             // This will respect the running user's permissions
-            // If user doesn't have access to Account.Name, this will fail
-            List<Account> accounts = [SELECT Id, Name FROM Account LIMIT 5];
+            // If user doesn't have access to Account.AnnualRevenue, this will fail
+            List<Account> accounts = [SELECT Id, Name, AnnualRevenue FROM Account LIMIT 5];
             System.debug('User mode query successful: ' + accounts.size() + ' accounts retrieved');
 
             // DML operations also run in user mode by default
-            Account newAccount = new Account(Name = 'Test Account from User Mode');
+            Account newAccount = new Account(Name = 'Test Account from User Mode', AnnualRevenue = 10500);
             insert newAccount; // Will fail if user lacks create permission on Account
             System.debug('User mode insert successful: ' + newAccount.Id);
 
@@ -29,11 +29,11 @@ public with sharing class UserModeDatabaseOperations {
     public static void demonstrateSystemMode() {
         try {
             // Explicitly run in system mode using Database class
-            List<Account> accounts = Database.query('SELECT Id, Name FROM Account LIMIT 5', AccessLevel.SYSTEM_MODE);
+            List<Account> accounts = Database.query('SELECT Id, Name, AnnualRevenue FROM Account LIMIT 5', AccessLevel.SYSTEM_MODE);
             System.debug('System mode query successful: ' + accounts.size() + ' accounts retrieved');
 
             // System mode DML
-            Account newAccount = new Account(Name = 'Test Account from System Mode');
+            Account newAccount = new Account(Name = 'Test Account from System Mode', AnnualRevenue = 10500);
             Database.insert(newAccount, AccessLevel.SYSTEM_MODE);
             System.debug('System mode insert successful: ' + newAccount.Id);
 
@@ -47,10 +47,10 @@ public with sharing class UserModeDatabaseOperations {
      */
     public static void demonstrateMixedMode() {
         // Query in user mode (respects permissions)
-        List<Account> userAccounts = Database.query('SELECT Id, Name FROM Account LIMIT 2', AccessLevel.USER_MODE);
+        List<Account> userAccounts = Database.query('SELECT Id, Name, AnnualRevenue FROM Account LIMIT 2', AccessLevel.USER_MODE);
 
         // Insert in system mode (bypasses permissions)
-        Account systemAccount = new Account(Name = 'System Mode Account');
+        Account systemAccount = new Account(Name = 'System Mode Account', AnnualRevenue = 10500);
         Database.insert(systemAccount, AccessLevel.SYSTEM_MODE);
 
         System.debug('Mixed mode operations completed successfully');
@@ -62,10 +62,11 @@ public with sharing class UserModeDatabaseOperations {
     public static void demonstrateFieldLevelSecurity() {
         try {
             // In user mode, this will only return fields the user can access
-            List<Account> accounts = Database.query('SELECT Id, Name, Phone, BillingCity FROM Account LIMIT 1', AccessLevel.USER_MODE);
+            List<Account> accounts = Database.query('SELECT Id, Name, AnnualRevenue, Phone, BillingCity FROM Account LIMIT 1', AccessLevel.USER_MODE);
             if (!accounts.isEmpty()) {
                 Account acc = accounts[0];
-                System.debug('User can access Name: ' + (acc.Name != null));
+                System.debug('Name: ' + acc.Name);
+                System.debug('User can access AnnualRevenue: ' + (acc.AnnualRevenue != null));
                 System.debug('User can access Phone: ' + (acc.Phone != null));
                 System.debug('User can access BillingCity: ' + (acc.BillingCity != null));
             }

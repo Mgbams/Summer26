@@ -125,7 +125,7 @@ Account ${accountName} is categorized under ${industry} and has an annual revenu
             return '';
         }
 
-        return String.escapeSingleQuotes(String.valueOf(value))
+        return String.valueOf(value)
             .replace('\\', '\\\\')
             .replace('"', '\\"')
             .replace('\n', '\\n')

@@ -1,0 +1,72 @@
+<template>
+    <lightning-card title="Account Payload Previewer" icon-name="standard:account">
+        <div class="slds-p-around_medium">
+
+            <div class="slds-grid slds-gutters slds-wrap">
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                    <lightning-record-picker
+                        label="Select Account"
+                        placeholder="Search Accounts..."
+                        object-api-name="Account"
+                        value={accountId}
+                        onchange={handleAccountChange}>
+                    </lightning-record-picker>
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                    <lightning-textarea
+                        label="Paste copied payload here"
+                        placeholder="After clicking Copy Payload, paste here to confirm the clipboard content."
+                        value={pastedPayload}
+                        onchange={handlePastedPayloadChange}>
+                    </lightning-textarea>
+                </div>
+            </div>
+
+            <div class="slds-m-top_medium">
+                <lightning-button
+                    label="Generate Payload"
+                    variant="brand"
+                    onclick={handleGeneratePayload}
+                    disabled={isGenerateDisabled}>
+                </lightning-button>
+
+                <lightning-button
+                    label="Clear"
+                    class="slds-m-left_small"
+                    onclick={handleClear}>
+                </lightning-button>
+            </div>
+
+            <template if:true={isLoading}>
+                <div class="slds-m-top_medium">
+                    <lightning-spinner
+                        alternative-text="Generating payload"
+                        size="small">
+                    </lightning-spinner>
+                </div>
+            </template>
+
+            <template if:true={errorMessage}>
+                <div class="slds-notify slds-notify_alert slds-alert_error slds-m-top_medium" role="alert">
+                    <span>{errorMessage}</span>
+                </div>
+            </template>
+
+            <template if:true={payload}>
+                <div class="slds-m-top_large payload-header">
+                    <h2 class="slds-text-heading_small">Generated JSON Payload</h2>
+
+                    <lightning-button
+                        label="Copy Payload"
+                        variant="neutral"
+                        onclick={handleCopyPayload}>
+                    </lightning-button>
+                </div>
+
+                <pre class="payload-box">{payload}</pre>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>

@@ -14,6 +14,7 @@ A structured collection of Salesforce Summer '26 feature demos, organised by top
 |---|---|---|
 | [User Mode Database Operations](topics/User_Mode_Database_Operations/README.md) | Apex database operations running in user mode by default | 67.0 |
 | [Write Cleaner Code by Using Multiline Strings](topics/Multiline_Strings/README.md) | Write Cleaner Code by Using Multiline Strings | 67.0 |
+| [Define Picklist Values for Apex Action Inputs](topics/Picklistvalues_ForActionInput/README.md) | Define Picklist Values for Apex Action Inputs | 67.0 |
 
 ---
 

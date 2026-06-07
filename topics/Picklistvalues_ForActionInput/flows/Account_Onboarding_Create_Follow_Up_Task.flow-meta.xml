@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Create_Customer_Follow_Up_Task</name>
+        <label>Create Customer Follow-Up Task</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <actionName>CustomerFollowUpAction</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+
+        <inputParameters>
+            <name>accountId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+
+        <inputParameters>
+            <name>urgency</name>
+            <value>
+                <stringValue>HIGH</stringValue>
+            </value>
+        </inputParameters>
+
+        <inputParameters>
+            <name>industryFocus</name>
+            <value>
+                <stringValue>Technology</stringValue>
+            </value>
+        </inputParameters>
+
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+
+    <apiVersion>67.0</apiVersion>
+    <description>
+        Demo Flow for Summer '26 Apex action input picklists.
+        It calls one Apex action with one static picklist input and one dynamic picklist input.
+    </description>
+    <environments>Default</environments>
+    <interviewLabel>Account Onboarding - Create Follow-Up Task {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Account Onboarding - Create Follow-Up Task</label>
+
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+
+    <processType>AutoLaunchedFlow</processType>
+
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Create_Customer_Follow_Up_Task</targetReference>
+        </connector>
+        <object>Account</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+
+    <status>Draft</status>
+</Flow>

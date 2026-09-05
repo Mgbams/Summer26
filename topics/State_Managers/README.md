@@ -1,10 +1,6 @@
 # 🧠 Manage State Across LWC Components with State Managers
 
-![LWC](https://img.shields.io/badge/LWC-API%2067.0-orange)
-
-![State Managers](https://img.shields.io/badge/LWC-State%20Managers-purple)
-
-![SFDX](https://img.shields.io/badge/SFDX-CLI-green)
+![LWC](https://img.shields.io/badge/LWC-API%2067.0-orange) ![State Managers](https://img.shields.io/badge/LWC-State%20Managers-purple) ![SFDX](https://img.shields.io/badge/SFDX-CLI-green)
 
 ---
 
@@ -14,7 +10,7 @@
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Project Name**       | Manage State Across LWC Components with State Managers                                                                                                                               |
 | **Technology**         | Lightning Web Components · JavaScript · Apex                                                                                                                                         |
-| **Salesforce Version** | Summer '26 / API 67.0                                                                                                                                                                |
+| **Salesforce Version** | Summer '26 / API 66.0                                                                                                                                                                |
 | **Feature Maturity**   | Generally Available (GA)                                                                                                                                                             |
 | **Problem It Solves**  | Sharing and coordinating reactive application state across multiple LWCs can lead to prop drilling, repetitive events, and state-management logic accumulating in parent components. |
 | **Key Features**       | `defineState()` · `atom()` · `computed()` · `setAtom()` · Actions · `fromContext()` · Provider/Consumer pattern · Reactive shared state                                              |
@@ -34,9 +30,7 @@ A small component tree might start with a parent passing data to a child:
 and receiving changes through custom events:
 
 ```html
-<c-contact-search
-    onsearchchange={handleSearchChange}
-></c-contact-search>
+<c-contact-search onsearchchange={handleSearchChange}></c-contact-search>
 ```
 
 That pattern works well for simple parent-child communication.
@@ -123,7 +117,7 @@ The application allows users to:
 
 ---
 
-## 🚀 Usage
+## Usage
 
 ### 1. Clone the Repository
 
@@ -146,9 +140,7 @@ sf org login web --alias my-summer26-org
 ### 3. Deploy the Project
 
 ```bash
-sf project deploy start \
-  --source-dir force-app \
-  --target-org my-summer26-org
+sf project deploy start --source-dir force-app --target-org my-summer26-org
 ```
 
 ---
@@ -156,10 +148,7 @@ sf project deploy start \
 ### 4. Run Apex Tests
 
 ```bash
-sf apex run test \
-  --class-names ContactStateControllerTest \
-  --target-org my-summer26-org \
-  --result-format human
+sf apex run test --class-names ContactStateControllerTest --target-org my-summer26-org --result-format human
 ```
 
 ---

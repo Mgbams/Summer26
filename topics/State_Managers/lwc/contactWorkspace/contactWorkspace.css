@@ -1,0 +1,25 @@
+.component-boundary {
+    position: relative;
+    border: 2px solid #1b96ff;
+    border-radius: 0.5rem;
+    padding: 1.5rem 0.75rem 0.75rem;
+    margin: 1rem 0;
+}
+
+.component-label {
+    position: absolute;
+    top: -0.75rem;
+    left: 1rem;
+    padding: 0.15rem 0.6rem;
+    background: white;
+    border: 2px solid #1b96ff;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    z-index: 1;
+}
+
+.workspace-content {
+    display: grid;
+    gap: 1rem;
+}

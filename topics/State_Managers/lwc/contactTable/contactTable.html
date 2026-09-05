@@ -1,0 +1,14 @@
+<template>
+    <section class="component-boundary">
+        <div class="component-label">
+            Consumer: c-contact-table
+        </div>
+
+        <lightning-datatable
+            key-field="id"
+            data={contacts}
+            columns={columns}
+            hide-checkbox-column
+        ></lightning-datatable>
+    </section>
+</template>

@@ -1,0 +1,25 @@
+<template>
+    <section class="component-boundary">
+        <div class="component-label">
+            Consumer: c-contact-summary
+        </div>
+
+        <div class="summary">
+            <span class="slds-badge">
+                Total contacts:
+                <strong class="slds-var-m-left_xx-small">
+                    {totalCount}
+                </strong>
+            </span>
+
+            <template lwc:if={hasFilter}>
+                <span class="slds-badge">
+                    Matching contacts:
+                    <strong class="slds-var-m-left_xx-small">
+                        {visibleCount}
+                    </strong>
+                </span>
+            </template>
+        </div>
+    </section>
+</template>

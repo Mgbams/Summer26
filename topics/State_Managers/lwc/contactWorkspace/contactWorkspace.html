@@ -1,0 +1,33 @@
+<template>
+    <section class="component-boundary provider-boundary">
+        <div class="component-label">
+            Provider: c-contact-workspace
+        </div>
+
+        <lightning-card title="Contact Workspace">
+            <template lwc:if={isLoading}>
+                <div class="slds-var-p-around_medium">
+                    <lightning-spinner
+                        alternative-text="Loading contacts"
+                    ></lightning-spinner>
+                </div>
+            </template>
+
+            <template lwc:elseif={loadError}>
+                <div class="slds-var-p-around_medium slds-text-color_error">
+                    Contacts couldn't be loaded.
+                </div>
+            </template>
+
+            <template lwc:else>
+                <div class="workspace-content">
+                    <c-contact-search></c-contact-search>
+
+                    <c-contact-summary></c-contact-summary>
+
+                    <c-contact-table></c-contact-table>
+                </div>
+            </template>
+        </lightning-card>
+    </section>
+</template>

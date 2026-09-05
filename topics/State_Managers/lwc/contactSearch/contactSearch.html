@@ -1,0 +1,17 @@
+<template>
+    <section class="component-boundary">
+        <div class="component-label">
+            Consumer: c-contact-search
+        </div>
+
+        <div class="component-content">
+            <lightning-input
+                type="search"
+                label="Search contacts"
+                placeholder="Search by name, email, or title"
+                value={searchTerm}
+                onchange={handleSearchChange}
+            ></lightning-input>
+        </div>
+    </section>
+</template>

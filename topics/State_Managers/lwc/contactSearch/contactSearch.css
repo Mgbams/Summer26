@@ -1,0 +1,22 @@
+.component-boundary {
+    position: relative;
+    border: 1px dashed #747474;
+    border-radius: 0.5rem;
+    padding: 1.5rem 1rem 1rem;
+}
+
+.component-label {
+    position: absolute;
+    top: -0.65rem;
+    left: 1rem;
+    padding: 0.1rem 0.5rem;
+    background: white;
+    border: 1px solid #747474;
+    border-radius: 1rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.component-content {
+    padding-top: 0.25rem;
+}
